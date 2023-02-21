@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devoir</title>
+
+    <style>
+        .tb1 {
+            border-spacing: 0;
+
+        }
+
+        body {
+            margin: 30px;
+            
+        }
+        .f{
+            background-color:white;
+            width:fit-content;
+        }
+    </style>
+</head>
+
+<body id="bd" >
+    <div class="d">Mhamad</div>
+    <form name="Registeration">
+        <table border="1" class="tb1">
+            <colgroup>
+                <col width="90px">
+                <col width="90px">
+                <col width="90px">
+                <col width="90px">
+                <col width="90px">
+                <col width="90px">
+            </colgroup>
+            <tr>
+                <th colspan="2">
+                    <h1 style="color:blue; text-align: center;"><b>UL</b></h1>
+                </th>
+                <th colspan="2" style="vertical-align: text-top; text-align:center;"><u><i>Student Registeration</i></u>
+                </th>
+                <th colspan="2"><img align="right" src="logo.jfif" width="40px" height="40px"></th>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <div id="date"><i><u></u></i></div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">Student ID</td>
+                <td colspan="3"><input type="text" id="stdID" size="8"></td>
+            </tr>
+            <tr>
+                <td colspan="3">First Name</td>
+                <td colspan="3"><input type="text" id="stdfirstname" size="8"></td>
+            </tr>
+            <tr>
+                <td colspan="3">Last Name</td>
+                <td colspan="3"><input type="text" id="stdlastname" size="8"></td>
+            </tr>
+            <tr>
+                <td colspan="3">Sex</td>
+                <td colspan="3">
+                    <input type="radio" id="male" name="gender" required> Male
+                    <input type="radio" id="Female" name="gender" required> Female
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">Average<br>In High School</td>
+                <td colspan="3">
+                    <input type="number" id="avg">
+                </td>
+            </tr>
+            <td colspan="3">Courses</td>
+            <td colspan="3">
+                <input type="checkbox" name="cours" id="w1"> DataBase(3 credits)<br>
+                <input type="checkbox" name="cours" id="w2"> Web(3 credits)<br>
+                <input type="checkbox" name="cours" id="w3"> French(2 credits)<br>
+                <input type="checkbox" name="cours" id="w4"> Anglais(1 credit)<br>
+                <input type="checkbox" name="cours" id="w5"> Math(2 credits)
+            </td>
+            <tr>
+                <td colspan="2" align="center"><input type="reset" value="Reset" style="width:90%;"></td>
+                <td colspan="2" align="center"><input type="button" value="Calculate" style="width:90%;"
+                        onclick="doitall()"></td>
+                <td colspan="2" align="center"><input type="button" value="Submit" style="width:90%;"></td>
+            </tr>
+        </table>
+    </form><br>
+    <input type="color" value="#FFAAEE" id="col">
+    <input type="button" id="bt" value="change color" onclick="ff()"><br>
+    <form class="f">
+        <input type="radio" name="player" id="messi" onclick="fc()"> Messi<br>
+        <input type="radio" name="player" id="ronaldo" onclick="fc()"> Ronaldo<br>
+    </form>
+    <script>
+        function fc(){
+            if(document.getElementById("messi").checked==1){
+            document.getElementById("bd").style.backgroundImage="url(messi.jpeg)";
+            document.getElementById("bd").style.backgroundSize="1300px 620px";}
+            else{
+            document.getElementById("bd").style.backgroundImage="url(ronaldo.jpg)";
+            document.getElementById("bd").style.backgroundSize="1300px 620px";}
+        }
+        function ff(){
+            var x=document.getElementById("col").value;
+            document.getElementById("bd").style.backgroundColor=x;
+        }
+        var now = new Date();
+        var c = "Date:" + now.getDate() + "/" + now.getMonth() + 1 + "/" + now.getFullYear();
+        document.getElementById("date").innerHTML = c;
+        function testID() {
+            var x = document.getElementById("stdID").value;
+            if (x == "" || x < 1000 || x > 1100) {
+                alert("Please fill the ID correctly");
+                document.getElementById("stdID").value = "";
+            }
+        }
+        function test_fn() {
+            var str = document.getElementById("stdfirstname").value;
+            if (!str.match(/^[A-Za-z\s]*$/)) {
+                alert("Only Letters in Name!!");
+                document.getElementById("stdfirstname").value = "";
+            }
+        }
+        function test_ln() {
+            var str = document.getElementById("stdlastname").value;
+            if (str.indexOf(".") != -1 || str.indexOf(" ") != -1) {
+                alert("No spaces or comma in lastname!!");
+                document.getElementById("stdlastname").value = "";
+            }
+        }
+        function test_check() {
+            var m = 0;
+            if (document.getElementById("w1").checked)
+                m++;
+            if (document.getElementById("w2").checked)
+                m++;
+            if (document.getElementById("w3").checked)
+                m++;
+            if (document.getElementById("w4").checked)
+                m++;
+            if (document.getElementById("w5").checked)
+                m++;
+            if (m < 2)
+                alert("You should choose more than 2 courses");
+        }
+        function doitall() {
+            testID();
+            test_check();
+            test_fn();
+            test_ln();
+        }
+    </script>
+</body>
+
+</html>
